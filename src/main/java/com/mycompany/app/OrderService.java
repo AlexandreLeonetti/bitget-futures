@@ -8,11 +8,15 @@ import com.alibaba.fastjson.JSON;
 import java.util.HashMap;
 import java.util.Map;
 
-@Service
+//@Service
 public class OrderService {
 
+    private final BitgetRestClient bitgetRestClient;
+
     @Autowired
-    private BitgetRestClient bitgetRestClient;
+    public OrderService(BitgetRestClient bitgetRestClient) {
+        this.bitgetRestClient = bitgetRestClient;
+    }
 
     public void placeLimitOrder(String symbol, String side, String orderType, String force, String price, String size) throws Exception {
         //placeOrder(symbol, side, "limit", "GTC", price, size);

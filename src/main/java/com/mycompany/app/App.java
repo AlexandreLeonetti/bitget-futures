@@ -1,25 +1,19 @@
+
 package com.mycompany.app;
-
-import javax.annotation.Resource;
-import com.bitget.openapi.common.client.BitgetRestClient;
-
+import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Component;
-import com.bitget.openapi.dto.response.ResponseResult;
-import com.alibaba.fastjson.JSON;
-import java.util.HashMap;
-import java.util.Map;
 
+import com.bitget.openapi.common.client.BitgetRestClient;
+import com.bitget.openapi.common.domain.ClientParameter;
+import com.bitget.openapi.common.enums.SupportedLocaleEnum;
 
 @SpringBootApplication
 public class App implements CommandLineRunner {
 
-    @Autowired
+    //@Autowired
     private OrderService orderService;
 
     public static void main(String[] args) {
@@ -31,6 +25,25 @@ public class App implements CommandLineRunner {
         //orderService.placeLimitOrder("BTCUSDT", "buy", "limit", "GTC", "77012.1", "0.001");
         //orderService.placeStopBuyOrder("BTCUSDT", "buy", "limit", "GTC", "77012.1", "0.001");
         //orderService.limitBuyDemoFutures();
+        // Initialize Dotenv and BitgetRestClient directly
+        Dotenv dotenv = Dotenv.configure().directory(System.getProperty("user.dir")).load();
+        BitgetRestClient bitgetRestClient = createBitgetRestClient(dotenv);
+        
+        // Initialize OrderService with the manually created BitgetRestClient
+        orderService = new OrderService(bitgetRestClient);
         orderService.stopBuyDemoFutures();
+    }
+    private BitgetRestClient createBitgetRestClient(Dotenv dotenv) throws Exception {
+        String apiKey = dotenv.get("APIKEY");
+        String secretKey = dotenv.get("SECRETKEY");
+        String passphrase = dotenv.get("PASSPHRASE");
+
+        ClientParameter parameter = ClientParameter.builder()
+            .apiKey(apiKey)
+            .secretKey(secretKey)
+            .passphrase(passphrase)
+            .baseUrl("https://api.bitget.com")
+            .locale(SupportedLocaleEnum.EN_US.getName()).build();
+        return BitgetRestClient.builder().configuration(parameter).build();
     }
 }
