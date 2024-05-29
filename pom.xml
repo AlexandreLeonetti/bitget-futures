@@ -1,0 +1,130 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.mycompany.app</groupId>
+  <artifactId>myproject</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>myproject</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- dotenv dependency -->
+	<dependency>
+	    <groupId>io.github.cdimascio</groupId>
+	    <artifactId>java-dotenv</artifactId>
+	    <version>5.2.2</version>
+	</dependency>
+        <!-- Bitget Dependency x-->
+        <dependency>
+            <groupId>com.upex.contract</groupId>
+            <artifactId>bitget-java-sdk-api</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+        <!-- spring dependencies -->
+               <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>5.3.23</version> <!-- Use the latest version -->
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>2.7.5</version> <!-- Use the latest version -->
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.7.5</version> <!-- Use the latest version -->
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+            <version>2.7.5</version> <!-- Use the latest version -->
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>2.7.5</version> <!-- Use the latest version -->
+            <scope>test</scope>
+        </dependency>
+<dependency>
+    <groupId>com.squareup.retrofit2</groupId>
+    <artifactId>retrofit</artifactId>
+    <version>2.9.0</version>
+</dependency>
+<dependency>
+    <groupId>com.squareup.retrofit2</groupId>
+    <artifactId>converter-gson</artifactId>
+    <version>2.9.0</version> <!-- Use the same version as your retrofit dependency -->
+</dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.4</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.15</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>33.2.0-jre</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-compress</artifactId>
+            <version>1.18</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.6</version>
+        </dependency>
+        <!-- other dependencies -->
+                <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>2.0.5</version>
+        </dependency>
+<dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-lang3</artifactId>
+    <version>3.12.0</version> <!-- Use the latest version -->
+</dependency>
+ <!--<dependency>
+    <groupId>com.bitget.openapi</groupId>
+    <artifactId>bitget-java-sdk-api</artifactId>
+    <version>1.0.1</version>
+ </dependency>-->
+  </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.7.5</version> <!-- Use the latest stable version -->
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <mainClass>com.mycompany.app.App</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
