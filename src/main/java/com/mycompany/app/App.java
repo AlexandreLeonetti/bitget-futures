@@ -22,16 +22,16 @@ public class App implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        //orderService.placeLimitOrder("BTCUSDT", "buy", "limit", "GTC", "77012.1", "0.001");
         //orderService.placeStopBuyOrder("BTCUSDT", "buy", "limit", "GTC", "77012.1", "0.001");
-        //orderService.limitBuyDemoFutures();
         // Initialize Dotenv and BitgetRestClient directly
         Dotenv dotenv = Dotenv.configure().directory(System.getProperty("user.dir")).load();
         BitgetRestClient bitgetRestClient = createBitgetRestClient(dotenv);
         
         // Initialize OrderService with the manually created BitgetRestClient
         orderService = new OrderService(bitgetRestClient);
-        orderService.stopBuyDemoFutures();
+        //orderService.stopBuyDemoFutures();
+        //orderService.placeLimitOrder("SBTCSUSDT", "buy", "limit", "GTC", "37012.1", "0.001");
+        orderService.limitBuyDemoFutures();
     }
     private BitgetRestClient createBitgetRestClient(Dotenv dotenv) throws Exception {
         String apiKey = dotenv.get("APIKEY");
